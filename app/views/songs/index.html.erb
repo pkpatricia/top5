@@ -11,11 +11,22 @@
       <div class="col-md-6">
         <div class="well">
           <h2><%= link_to song.name, song %></h2>
-          <h4><%= song.rating %></h4>
+          <h3>by <%= song.artist.name %></h3>
           <p>
-            <%= link_to 'Edit', edit_song_path(song) %> |
-            <%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </p>
+              <% song.rating.times do %>
+              <span class="glyphicon glyphicon-star"></span>
+              <% end %>
+         </p>
+          
+          <hr/>
+          <h4><%= link_to edit_song_path(song) do %>
+            <span class="glyphicon glyphicon-pencil"></span>
+          <% end %>  
+          <%= link_to song, method: :delete, data: { confirm: 'Are you sure?' } do %>
+             <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+          </h4>   
+          
         </div>
       </div>
     <% end %>
